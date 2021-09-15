@@ -1,0 +1,18 @@
+---
+
+- name: Install and configure vsFTPd Server
+  hosts: localhost
+  become: true
+  gather_facts: true
+
+  roles:
+    - ../roles/vsftpd
+
+  vars:
+    ftp_server_banner: "Welcome to vsFTPd server"
+    users:
+      - name: vuser
+        state: present
+        comment: "vuser FTP user"
+        password: "$6$BPhASVzDi6r6$D2khiB70gw6YMuO9gAEGUVibc5xvpl/Unqth6btIWkPwLfAmhVv2f/auaebIpKaNImP0ixfH24DKDBlUKEYZc/"
+
